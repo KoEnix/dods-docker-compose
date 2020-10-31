@@ -9,11 +9,20 @@
 * public IP
 
 ### Install
-Download from git ```git clone https://github.com/KoEnix/dods-docker-compose.git && cd dods-docker-compose```
+Download from git
+```shell
+git clone https://github.com/KoEnix/dods-docker-compose.git && cd dods-docker-compose
+```
 
-Make script executable ```chmod +x starter.sh```
+Make script executable 
+```shell
+chmod +x starter.sh
+```
 
-Startup server ```./starter.sh```
+Startup server 
+```shell
+./starter.sh
+```
 
 **Optional**
 * Change server name and specs in *server.cfg*
