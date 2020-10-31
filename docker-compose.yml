@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  dods:
+    image: "lacledeslan/gamesvr-dods:latest"  
+    network_mode: "host" 
+    volumes:
+      - "./server.cfg:/app/dod/cfg/server.cfg"
+      - "./mapcycle.txt:/app/dod/cfg/mapcycle.txt"
+      - "./maps/:/app/dod/maps"
+      - "./materials/:/app/dod/materials"
+      - "./resource/:/app/dod/resource"
+    command: ./srcds_run -game dod +map dod_avalanche@night_b2 +maxplayers 20 +exec server.cfg +mapcyclefile mapcycle.txt +fps_max 300 -usercon +net_public_adr ${GLOBAL_IP} +ip ${GLOBAL_IP} -port 27015
+  fileserver:
+    image: "httpd:alpine"
+    volumes:
+      - "./maps:/usr/local/apache2/htdocs/dod"
+    ports:
+      - "${URL_PORT}:80"
+
